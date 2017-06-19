@@ -65,9 +65,10 @@ In fact, you can use more than one representation type and decide which one to u
 The client sends the request to the server and the server replies with a response. The request and response includes more information that is called metadata besides the message.
 
 HTTP Request: 
-| One    | Two | Three | Four    | Five  | Six 
-| -
-| Span <td colspan=3>triple  <td colspan=2>double
+
+| One     | Two        | Three   | Four          | 
+| ------------- |-------------| ---------| ------------- |
+| Span Across ||||
 
 | Verb | Uri | HTTP Version 
 | - 
