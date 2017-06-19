@@ -67,11 +67,13 @@ The client sends the request to the server and the server replies with a respons
 HTTP Request: 
 
 <table>
+ <THEAD>
   <tr>
     <td>Verb</td>
     <td>Uri</td>
     <td>HTTP Version</td>
   </tr>
+  </THEAD> 
   <tr>
     <td colspan="3">Request Header</td>
   </tr>
