@@ -65,10 +65,11 @@ In fact, you can use more than one representation type and decide which one to u
 The client sends the request to the server and the server replies with a response. The request and response includes more information that is called metadata besides the message.
 
 HTTP Request: 
-| <Verb> | <Uri> | <HTTP Version> | 
-| --- | --- | --- |
-| <Request Header> |
-| <Request Body> |
+
+| Verb | Uri | HTTP Version 
+| -
+| <td colspan=3> Request Header 
+| <td colspan=3> Request Body 
 
 * <VERB> is one of the HTTP methods like GET, PUT, POST, DELETE, OPTIONS, etc
 * <URI> is the URI of the resource on which the operation is going to be performed
