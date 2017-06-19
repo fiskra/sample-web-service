@@ -66,10 +66,10 @@ The client sends the request to the server and the server replies with a respons
 
 HTTP Request: 
 
-| Verb | Uri | HTTP Version 
-| -
-| <td colspan=3> Request Header 
-| <td colspan=3> Request Body 
+| Verb | Uri | HTTP Version |
+| - |
+| <td colspan=3> Request Header |
+| <td colspan=3> Request Body |
 
 * <VERB> is one of the HTTP methods like GET, PUT, POST, DELETE, OPTIONS, etc
 * <URI> is the URI of the resource on which the operation is going to be performed
