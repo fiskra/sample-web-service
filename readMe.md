@@ -66,9 +66,20 @@ The client sends the request to the server and the server replies with a respons
 
 HTTP Request: 
 
-| One     | Two        | Three   | Four          | 
-| ------------- |-------------| ---------| ------------- |
-| Span Across ||||
+<table>
+  <tr>
+    <td>Verb</td>
+    <td>Uri</td>
+    <td>HTTP Version</td>
+  </tr>
+  <tr>
+    <td colspan="3">Request Header</td>
+  </tr>
+  <tr>
+    <td colspan="3">Request Body</td>
+  </tr>
+</table>
+
 
 | Verb | Uri | HTTP Version 
 | - 
