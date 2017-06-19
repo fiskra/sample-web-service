@@ -117,14 +117,14 @@ Accept-Language: en-US,en;q=0.8,hi;q=0.6
 
 <table>
   <tr>
-    <td><HTTP Version></td>
-    <td><Response Code></td>
+    <td>HTTP Version</td>
+    <td>Response Code</td>
   </tr>
   <tr>
-    <td colspan="2"><Response Header></td>
+    <td colspan="2">Response Header</td>
   </tr>
   <tr>
-    <td colspan="2"><Response Body></td>
+    <td colspan="2">Response Body</td>
   </tr>
 </table>
 
