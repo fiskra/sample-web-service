@@ -64,16 +64,14 @@ In fact, you can use more than one representation type and decide which one to u
 #### Messages
 The client sends the request to the server and the server replies with a response. The request and response includes more information that is called metadata besides the message.
 
-HTTP Request: 
+** HTTP Request: **
 
 <table>
- <THEAD>
   <tr>
     <td>Verb</td>
     <td>Uri</td>
     <td>HTTP Version</td>
   </tr>
-  </THEAD> 
   <tr>
     <td colspan="3">Request Header</td>
   </tr>
@@ -82,11 +80,6 @@ HTTP Request:
   </tr>
 </table>
 
-
-| Verb | Uri | HTTP Version 
-| - 
-| <td colspan=3> Request Header 
-| <td colspan=3> Request Body 
 
 * <VERB> is one of the HTTP methods like GET, PUT, POST, DELETE, OPTIONS, etc
 * <URI> is the URI of the resource on which the operation is going to be performed
@@ -108,6 +101,7 @@ Content-Length: 123
   <Email>m.vaqqas@gmail.com</Email>
   <Country>India</Country>
 </Person>
+
 ```
 A sample GET request:
 
@@ -119,15 +113,26 @@ User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 …
 Accept-Encoding: gzip,deflate,sdch
 Accept-Language: en-US,en;q=0.8,hi;q=0.6
 ```
-HTTP Response:
-| <HTTP Version> | <Response Code> |  
-| --- | --- |
-| <Response Header> |
-| <Response Body> |
+** HTTP Response: ** 
+
+<table>
+  <tr>
+    <td><HTTP Version></td>
+    <td><Response Code></td>
+  </tr>
+  <tr>
+    <td colspan="2"><Response Header></td>
+  </tr>
+  <tr>
+    <td colspan="2"><Response Body></td>
+  </tr>
+</table>
 
 * <Response Header> contains the metadata and settings about the response message.
 * <Response Body> contains the representation if the request was successful.
 * <Response Code> is a three digit HTTP status code like 200,400,404,500
+
+
 
 Response format for GET request:
 
@@ -162,7 +167,7 @@ Rest web services have at least one URI(Uniform Resource Identifier (URI) is a s
 ##### Query Parameters in URI
 Building URIs with query parameters is not recommended, you can but there are some disadvantages:
 
-Ex: http://MyService/Persons?id=1
+Ex: `http://MyService/Persons?id=1`
 
 * Increased complexity and reduced readability, which will increase if you have more parameters
 * Search-engine crawlers and indexers like Google ignore URIs with query parameters.
