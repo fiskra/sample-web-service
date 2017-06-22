@@ -34,7 +34,8 @@ The purpose of a service is to provide resources to clients's window which might
 * Caching 
 
 #### Representations
-Restful web services supports data format as **Plain text, HTML, XML, JSON etc.** . While building a restful web service, the first thing we should think about is deciding resource format. Sample JSON and XML format for **Person** entity :
+Restful web services supports data format as **Plain text, HTML, XML, JSON etc.** . While building a restful web service, the first thing we should think about is deciding resource format. Sample JSON and XML format for **Person** entity.
+
 JSON representation:
 ```
 {
@@ -64,7 +65,7 @@ In fact, you can use more than one representation type and decide which one to u
 #### Messages
 The client sends the request to the server and the server replies with a response. The request and response includes more information that is called metadata besides the message.
 
-** HTTP Request: **
+**HTTP Request:**
 
 <table>
   <tr>
@@ -113,7 +114,7 @@ User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 …
 Accept-Encoding: gzip,deflate,sdch
 Accept-Language: en-US,en;q=0.8,hi;q=0.6
 ```
-** HTTP Response: ** 
+**HTTP Response:** 
 
 <table>
   <tr>
@@ -152,6 +153,9 @@ Content-Type: text/html; charset=iso-8859-1
 <body>
 ...
 ```
+##### Media Types
+The **Accept** and **Content-Type** HTTP headers can be used to describe the content being sent or requested within an HTTP request. 
+When sending data **Content-Type to application/xml** is used. The client may set **Accept to application/json** if it is requesting a response in JSON.
 
 #### Addressing Resources
 Rest web services have at least one URI(Uniform Resource Identifier (URI) is a string of characters used to identify a resource). URI identifies resources. When building rest apis or whatever we should follow best practices as much as we can. There are some recommendations for well-structured URI:
@@ -162,7 +166,10 @@ Rest web services have at least one URI(Uniform Resource Identifier (URI) is a s
 * The URI is case **insensitive**
 * You should have your own convention and it should be well-documented.
 * Your URIs should not change but if you need to change it, you should not break the old one, redirecting a new URI and use HTTP 300 code would be a good solution.
-* Avoid verbs for your resource like **http://MyService/FetcthPerson/1** or **http://MyService/DeletePerson?id=1**
+* Avoid verbs for your resource like **http://MyService/FetchPerson/1** or **http://MyService/DeletePerson?id=1**
+* By default, the URI variable must match the regular expression "[^/]+?". 
+
+Ex : `@Path("/users/{username}")` with regex -> `@Path("users/{username: [a-zA-Z][a-zA-Z_0-9]*}")` if requested url doesn't fit this regex, 404 response will be sent to client.
 
 ##### Query Parameters in URI
 Building URIs with query parameters is not recommended, you can but there are some disadvantages:
@@ -250,9 +257,38 @@ There is no policy between client and server in rest, whereas soap has a wsdl, w
 
 [Rest Web Service Doc Ref](http://www.drdobbs.com/web-development/restful-web-services-a-tutorial/)
 
+
+### Building RESTful Web Services
+There are many ways to build a restful web service. You can use Spring, JAX-RS or if you are brave and well-experienced on http methods, you can write your own servlets.
+JAX-RS is just specification, there are some implementations over there as I mentioned below:
+
+| JAX-RS Implementations |
+| --- |
+| **Apache CXF**, an open source Web service framework. |
+| **Jersey**, the reference implementation from Sun (now Oracle) |
+| **RESTeasy**, JBoss's implementation. |
+| **Restlet** (old one) |
+
+If we have java ee compliant application server, it has already jax-rs api for building rest web service. Another good example of specification and implementation is 
+**JPA and Hibernate**.
+**JAX-RS and Jersey**
+**JAX-RS and RESTEasy** 
+
+Before deciding on a server to use, we should look at what JAX-RS implementation (name, vendor, version and known bugs) it provides, at least for production environments. For instance, Glassfish comes with Jersey, while Wildfly or Jboss come with RESTEasy. 
+	
+Building a rest web service is easy with spring-boot. You can check it out here developing basic web service:
+[spring-boot-rest](https://spring.io/guides/gs/rest-service/) 
+
+
+[oracle-ws-certificate-doc](http://java.boot.by/ocewsd6-guide/)
+
 ## SOAP
 
- 
+
+
+
+
+## SOAP VS REST 
  
 | SOAP | REST |
 | --- | --- |
