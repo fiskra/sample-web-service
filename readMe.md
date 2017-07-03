@@ -1,4 +1,4 @@
-# SIMPLE CRUD WEB SERVICE PROJECT
+# SIMPLE WEB SERVICE PROJECT
 
 ## Getting Started
 
@@ -215,6 +215,9 @@ They do the same job: insert or update existing resource. But first difference i
 | POST http://MyService/Persons/1 | Update the existing person where PersonID=1 |  
 
 #### Statelessness 
+
+> No client session state on the server.
+
 Rest web service is stateless which means there is no conversational state between client and server. A request is sent, and it is not related old requests or others.
 HTTP is a stateless protocol by design and you need to do something extra to implement a stateful service using HTTP. But it is really easy to implement stateful services with current technologies.
 
@@ -258,6 +261,22 @@ There is no policy between client and server in rest, whereas soap has a wsdl, w
 [Rest Web Service Doc Ref](http://www.drdobbs.com/web-development/restful-web-services-a-tutorial/)
 
 
+#### Beyond the so far discussed
+So far so good but if we talk about building rest services as an advanced level, we should mention HATEOAS.
+Clients must know the API a priori. Changes in the API break clients and they break the documentation about the service. Hypermedia as the engine of application state (a.k.a. HATEOAS) is one more constraint that addresses and removes this coupling. 
+Example of hateoas rest service output:
+
+```
+{
+  _links : {
+    self: { href: "http://myhost/person/1" },
+  },
+  firstname : "Dave",
+  lastname : "Matthews"
+}
+
+```  
+
 ### Building RESTful Web Services
 There are many ways to build a restful web service. You can use Spring, JAX-RS or if you are brave and well-experienced on http methods, you can write your own servlets.
 JAX-RS is just specification, there are some implementations over there as I mentioned below:
@@ -284,11 +303,87 @@ Building a rest web service is easy with spring-boot. You can check it out here 
 
 ## SOAP
 
+Skeleton of SOAP message
+
+```
+<?xml version="1.0"?>
+
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+
+<soap:Header>
+...
+</soap:Header>
+
+<soap:Body>
+...
+  <soap:Fault>
+  ...
+  </soap:Fault>
+</soap:Body>
+
+</soap:Envelope>
+```
+
+#### SOAP Binding 
+
+The SOAP specification defines the structure of the SOAP messages, not how they are exchanged. This gap is filled by what is called "SOAP Bindings". SOAP bindings are mechanisms which allow SOAP messages to be effectively exchanged using a transport protocol.
+
+* Most SOAP implementations provide bindings for common transport protocols, such as HTTP or SMTP.
+* HTTP is synchronous and widely used. A SOAP HTTP request specifies at least two HTTP headers: Content-Type and Content-Length.
+* SMTP is asynchronous and is used in last resort or particular cases.
+* Java implementations of SOAP usually provide a specific binding for the JMS (Java Messaging System) protocol.
 
 
+#### WSDL
+WSDL represents a contract between a Web Service Consumer and Web Service Provider in which it specifies the exact message format, Internet protocol, Internet address of the Web service provider, etc.
+JAX-RPC is one of technologies which can interpret a WSDL document to generate interfaces and network stubs for its described Web service.
 
+* WSDL is used to describe web services
+* WSDL is written in XML
+
+WSDL describes the following critical pieces of data:
+
+* Interface information describing all publicly available functions
+* Data type information for all message requests and message responses
+* Binding information about the transport protocol to be used
+* Address information for locating the specified service
+
+Simple WSDL example:  
+
+```
+<message name="getTermRequest">
+  <part name="term" type="xs:string"/>
+</message>
+
+<message name="getTermResponse">
+  <part name="value" type="xs:string"/>
+</message>
+
+<portType name="glossaryTerms">
+  <operation name="getTerm">
+    <input message="getTermRequest"/>
+    <output message="getTermResponse"/>
+  </operation>
+</portType>
+
+<binding type="glossaryTerms" name="b1">
+   <soap:binding style="document"
+   transport="http://schemas.xmlsoap.org/soap/http" />
+   <operation>
+     <soap:operation soapAction="http://example.com/getTerm"/>
+     <input><soap:body use="literal"/></input>
+     <output><soap:body use="literal"/></output>
+  </operation>
+</binding>
+
+```
+#### JAXB
+The Java Architecture of XML Binding (JAXB) provides a free, fast and convenient way to bind XML schemas to Java representations, making it easy for Java developers to incorporate XML data and processing functions in Java applications without having to know much about XML itself.
 
 ## SOAP VS REST 
+[rest vs soap comparison](http://maxivak.com/rest-vs-xml-rpc-vs-soap/)
  
 | SOAP | REST |
 | --- | --- |
