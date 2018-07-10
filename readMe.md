@@ -17,7 +17,7 @@
 
 Web service is a communication between two applications or machines over the world wide web(www). There are two kind of web service: 
  * REST(Representational State Transfer) 
- * SOAP(Simple Object Access Protocol)
+ * SOAP(Simple Object Access Protocol) - Not a web service, it is  XML-based web service protocols
  
 ## RESTful Web Services
 
