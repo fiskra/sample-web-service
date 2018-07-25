@@ -1,3 +1,27 @@
+ ```
+ int it = 0;
+    int y = 0;
+    for (; y <= it && it < arr[0].length; y = 0) {
+      for (int x = it; y < arr.length && x >= 0; x--, y++) {
+        System.out.print(arr[y][x] + " ");
+      }
+      System.out.println();
+      it++;
+    }
+
+    int it2 = 1;
+    int y2 = 1;
+    int x2;
+    for (; y2 <= it2 && it2 < arr[0].length; y2 = it2) {
+      x2 = 5;
+      for (; y2 < arr.length && x2 >= 0; x2--, y2++) {
+        System.out.print(arr[y2][x2] + " ");
+      }
+      System.out.println();
+      it2++;
+    }
+```
+
 # SIMPLE WEB SERVICE PROJECT
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/fiskra/sample-web-service/master/LICENSE)
 ## Getting Started
